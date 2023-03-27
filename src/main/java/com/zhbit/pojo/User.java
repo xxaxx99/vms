@@ -51,7 +51,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Register{" +
+        return "User{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", adPhone='" + adPhone + '\'' +

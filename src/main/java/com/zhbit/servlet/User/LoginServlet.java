@@ -22,9 +22,9 @@ public class LoginServlet extends HttpServlet {
         String userPassword = req.getParameter("password");
 
         User user = userService.login(userName, userPassword);
-        System.out.println(user);
+
         if(user != null){
-            // 给登录成功的用户发放 Session
+            // 给登录成功的用户发 Session
             req.getSession().setAttribute(Constants.USER_SESSION, user);
             // 重定向，转跳到登录后的页面
             resp.sendRedirect("./jsp/homePage.jsp");

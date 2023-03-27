@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService{
         userDao = new UserDaoImpl();
     }
 
-
     @Override
     public User login(String userName, String password) {
         Connection connection = null;
@@ -26,7 +25,14 @@ public class UserServiceImpl implements UserService{
 
         try {
             connection  = DBUtils.getConnection();
+
+            // 从 Dao 层获取查询出来的数据
             user  = userDao.getLoginUser(connection, userName);
+
+            // 校验密码是否正确
+            if(!password.equals(user.getPassword())){
+                user = null;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {

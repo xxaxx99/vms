@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,6 +66,7 @@
 </style>
 <body>
 <h3>当前位置：文档管理</h3>
+<a href="${pageContext.request.contextPath}/logout" style="text-align: right">退出</a>
 <table class="table table-hover text-center">
 	<tbody><tr>
 		<th width="5%">ID</th>

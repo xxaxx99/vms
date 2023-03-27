@@ -5,6 +5,7 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <!--字符编码过滤器（防止乱码）-->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>com.zhbit.filter.CharacterEncodingFilter</filter-class>
@@ -13,7 +14,19 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
+
+
+  <!--登录权限过滤器，如果注销账号则进不去-->
+  <filter>
+    <filter-name>LoginRightsFilter</filter-name>
+    <filter-class>com.zhbit.filter.LoginrightsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginRightsFilter</filter-name>
+    <url-pattern>/jsp/*</url-pattern>
+  </filter-mapping>
+
+  <!--登录-->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.zhbit.servlet.User.LoginServlet</servlet-class>
@@ -23,6 +36,17 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
+  <!--注销-->
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.zhbit.servlet.User.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <!--欢迎页面喂login.jsp-->
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
