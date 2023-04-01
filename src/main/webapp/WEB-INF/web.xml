@@ -29,7 +29,7 @@
   <!--登录-->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>com.zhbit.servlet.User.LoginServlet</servlet-class>
+    <servlet-class>com.zhbit.servlet.Login.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
@@ -39,7 +39,7 @@
   <!--注销-->
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>com.zhbit.servlet.User.LogoutServlet</servlet-class>
+    <servlet-class>com.zhbit.servlet.Login.LogoutServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>

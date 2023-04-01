@@ -1,4 +1,4 @@
-package com.zhbit.servlet.User;
+package com.zhbit.servlet.Login;
 
 import com.zhbit.util.Constants;
 

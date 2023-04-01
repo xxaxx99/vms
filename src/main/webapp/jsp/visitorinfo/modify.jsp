@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>订单管理</title>
+	<title>车主信息</title>
 </head>
 <style>
     table, th, td {
@@ -56,36 +56,46 @@
         margin-left:2px;
         line-height: 24px;
     }
+    /*当前页样式*/
+    .active {
+        background-color: green;
+        color: white;
+    }
+    .more {
+        border: none;
+    }
+    tr td:last-child {
+        text-align: left;
+        margin-left: 20px;
+    }
 </style>
 <body>
-<h3>当前位置：订单管理</h3>
+<h3>当前位置：车主信息</h3>
+<a href="${pageContext.request.contextPath}/visitorinfo?message=query" style="text-align: right">返回</a>
 <a href="${pageContext.request.contextPath}/logout" style="text-align: right">退出</a>
-<table class="table table-hover text-center">
-	<tbody><tr>
-		<th width="5%">订单号</th>
-		<th width="15%">电话</th>
-		<th width="35%">费用</th>
-		<th width="10%">车牌号</th>
-		<th width="15%">停车时长</th>
-		<th width="20%">操作</th>
-	</tr>
-	<c:forEach items="${orderList}" var="order">
+<form action="${pageContext.request.contextPath}/visitorinfo?message=add" method="post">
+	<table class="table table-hover text-center">
+		<tbody>
 		<tr>
-			<td>${order.id}</td>
-			<td>${order.phone}</td>
-			<td>${order.money}元</td>
-			<td>${order.carNumber}</td>
-			<td>${order.time}分钟</td>
+			<td>电话</td>
 			<td>
-				<div>
-					<a href="${pageContext.request.contextPath}/jsp/order/modify.jsp" style="text-align: right">添加</a>
-					<a href="${pageContext.request.contextPath}/order/update?id=${order.id}"> 修改</a>
-					<a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"> 删除</a>
-				</div>
+				<input type="text" name="visPhone" value="${visitorInfo.visPhone}">
 			</td>
 		</tr>
-	</c:forEach>
-	</tbody>
-</table>
+		<tr>
+			<td>车牌号</td>
+			<td>
+				<input type="text" name="carNo" value="${visitorInfo.carNo}">
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<input type="submit" value="保存">
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</form>
 </body>
 </html>

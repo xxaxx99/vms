@@ -1,10 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  isELIgnored="false"  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>订单管理</title>
+    <meta charset="UTF-8">
+    <title>停车场车位信息</title>
 </head>
 <style>
     table, th, td {
@@ -56,36 +56,45 @@
         margin-left:2px;
         line-height: 24px;
     }
+    /*当前页样式*/
+    .active {
+        background-color: green;
+        color: white;
+    }
+    .more {
+        border: none;
+    }
+    tr td:last-child {
+        text-align: left;
+        margin-left: 20px;
+    }
 </style>
 <body>
-<h3>当前位置：订单管理</h3>
+<h3>当前位置：停车场车位信息</h3>
+<a href="${pageContext.request.contextPath}/parkcarinfo/query/query" style="text-align: right">返回</a>
 <a href="${pageContext.request.contextPath}/logout" style="text-align: right">退出</a>
-<table class="table table-hover text-center">
-	<tbody><tr>
-		<th width="5%">订单号</th>
-		<th width="15%">电话</th>
-		<th width="35%">费用</th>
-		<th width="10%">车牌号</th>
-		<th width="15%">停车时长</th>
-		<th width="20%">操作</th>
-	</tr>
-	<c:forEach items="${orderList}" var="order">
-		<tr>
-			<td>${order.id}</td>
-			<td>${order.phone}</td>
-			<td>${order.money}元</td>
-			<td>${order.carNumber}</td>
-			<td>${order.time}分钟</td>
-			<td>
-				<div>
-					<a href="${pageContext.request.contextPath}/jsp/order/modify.jsp" style="text-align: right">添加</a>
-					<a href="${pageContext.request.contextPath}/order/update?id=${order.id}"> 修改</a>
-					<a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"> 删除</a>
-				</div>
-			</td>
-		</tr>
-	</c:forEach>
-	</tbody>
-</table>
+
+
+<form action="${pageContext.request.contextPath}/parkcarinfo/${param.parkNo == null  ? 'create' : 'update'}" method="post">
+    <input type="hidden" name="parkNo" value="${parkcarinfo.parkNo}">
+    <table>
+        <tbody>
+        <tr>
+            <td>所有车位数量</td>
+            <td><input type="text" name="allspace" value="${parkcarinfo.allspace}">个</td>
+        </tr>
+        <tr>
+            <td>已占用车位数量</td>
+            <td><input type="text" name="occupied" value="${parkcarinfo.occupied}">个</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="储存">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
 </body>
 </html>

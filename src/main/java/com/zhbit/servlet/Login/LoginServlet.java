@@ -1,4 +1,4 @@
-package com.zhbit.servlet.User;
+package com.zhbit.servlet.Login;
 
 import com.zhbit.pojo.User;
 import com.zhbit.service.User.UserServiceImpl;
@@ -12,12 +12,13 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
 
-    //Servlet:控制层：调Service层
+    //VisitorCreateServlet:控制层：调Service层
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         UserServiceImpl userService = new UserServiceImpl();
-
+        //String message = req.getParameter("message");
+        //System.out.println(message);
         String userName = req.getParameter("username");
         String userPassword = req.getParameter("password");
 
@@ -29,7 +30,6 @@ public class LoginServlet extends HttpServlet {
             // 重定向，转跳到登录后的页面
             resp.sendRedirect("./jsp/homePage.jsp");
         } else{
-            req.setAttribute("error", "用户名或密码错误");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
 

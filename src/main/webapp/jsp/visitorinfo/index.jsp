@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>订单管理</title>
+	<title>车主信息</title>
 </head>
 <style>
     table, th, td {
@@ -58,29 +58,25 @@
     }
 </style>
 <body>
-<h3>当前位置：订单管理</h3>
+<h3>当前位置：车主信息</h3>
 <a href="${pageContext.request.contextPath}/logout" style="text-align: right">退出</a>
 <table class="table table-hover text-center">
 	<tbody><tr>
-		<th width="5%">订单号</th>
+		<th width="5%">编号</th>
 		<th width="15%">电话</th>
-		<th width="35%">费用</th>
-		<th width="10%">车牌号</th>
-		<th width="15%">停车时长</th>
+		<th width="35%">车牌号</th>
 		<th width="20%">操作</th>
 	</tr>
-	<c:forEach items="${orderList}" var="order">
+	<c:forEach items="${visitorInfoList}" var="visitorInfo">
 		<tr>
-			<td>${order.id}</td>
-			<td>${order.phone}</td>
-			<td>${order.money}元</td>
-			<td>${order.carNumber}</td>
-			<td>${order.time}分钟</td>
+			<td>${visitorInfo.id}</td>
+			<td>${visitorInfo.visPhone}</td>
+			<td>${visitorInfo.carNo}</td>
 			<td>
 				<div>
-					<a href="${pageContext.request.contextPath}/jsp/order/modify.jsp" style="text-align: right">添加</a>
-					<a href="${pageContext.request.contextPath}/order/update?id=${order.id}"> 修改</a>
-					<a href="${pageContext.request.contextPath}/order/delete?id=${order.id}"> 删除</a>
+					<a href="${pageContext.request.contextPath}/jsp/visitorinfo/modify.jsp" style="text-align: right">添加</a>
+					<a href="${pageContext.request.contextPath}/visitorinfo?message=update&id=${visitorInfo.id}"> 修改</a>
+					<a href="${pageContext.request.contextPath}/visitorinfo?message=delete&id=${visitorInfo.id}"> 删除</a>
 				</div>
 			</td>
 		</tr>

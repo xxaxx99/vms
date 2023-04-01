@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class UserServiceImpl implements UserService{
 
-    //调dao层0
+    //调dao层
     private UserDao userDao;
 
     public UserServiceImpl(){
